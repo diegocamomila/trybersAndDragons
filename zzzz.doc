@@ -1,0 +1,47 @@
+# rodar node irá inicializar um container chamado trybers_and_dragons
+docker-compose up -d
+
+# acesso ao terminal interativo do container criado pelo compose, 
+# que está rodando em segundo plano
+docker exec -it trybers_and_dragons bash
+
+
+
+# derruba tudo e apaga tudo
+docker container stop $(docker container ls -a -q) && docker system prune -a -f --volumes 
+
+# derruba container 
+docker container ls -a -q
+
+# derruba compose
+docker-compose down
+
+# crio o model e o migrations
+ npx sequelize model:generate --name post.categories --attributes postId:integer 
+ npx sequelize model:generate --name User --attributes displayName:string 
+ npx sequelize model:generate --name BlogPosts --attributes title:string 
+ npx sequelize model:generate --name Categories --attributes name:string
+<!-- pormais que eu criei name como User nas tabela migrations ficou com s Users mas model se referencia com User e seed como Users -->
+
+# crio os seed
+ npx sequelize seed: --name Users 
+ 
+
+ # JSdocks para dar a sugestoes
+/**
+ * @param {import('sequelize').Sequelize} sequelize 
+ * @param {import('sequelize').DataTypes} dataTypes 
+ * @returns 
+ */
+
+# inicializo o sequelize
+npx sequelize-cli init
+
+# cria banco
+npx sequelize db:create  
+
+# roda as migrations
+npx sequelize db:migrate 
+
+# Para executar o seed, basta rodarmos o comando abaixo
+npx sequelize db:seed:all

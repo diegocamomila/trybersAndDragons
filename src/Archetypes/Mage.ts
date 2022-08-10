@@ -14,11 +14,11 @@ export default class Mage extends Archetype {
     return this.counterInstance;
   }
   
-  set energyType(mana: EnergyType) {
-    this.energyType = mana;
+  set energyType(typeEnergi: EnergyType) {
+    this._energyType = typeEnergi;
   }
 
   get energyType() {
-    return this.energyType;
+    return this._energyType;
   }
 }

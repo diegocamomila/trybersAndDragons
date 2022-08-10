@@ -1,6 +1,7 @@
 import { EnergyType } from '../Energy';
 
 export default abstract class Race {
+  protected _energyType: EnergyType = 'mana';
   protected _name:string;
   protected _special:number;
   protected _cost:number;

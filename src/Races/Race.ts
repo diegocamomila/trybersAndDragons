@@ -1,3 +1,4 @@
+// https://www.tutorialkart.com/typescript/typescript-method-overriding/#:~:text=Method%20Overriding%20is%20a%20process,super%20class%20for%20certain%20tasks.
 // public: permite acesso a qualquer código externo a classe.
 // protected: permite acesso às classes filhas, mas proíbe a qualquer outro acesso externo.
 // private: proíbe qualquer acesso externo à própria classe, inclusive das classes filhas.
@@ -23,7 +24,7 @@ export default abstract class Race {
   get dexterity() {
     return this._dexterity;
   }
-
+  
+  abstract set maxLifePoints(life);
   abstract get maxLifePoints():number;
-  abstract set maxLifePoints(number);
 }

@@ -12,7 +12,7 @@ export default class Character implements Fighter {
   protected _strength: number;
   protected _defense: number;  
   protected _dexterity: number;
-  protected _energy?: Energy | undefined;
+  protected _energy: Energy | undefined;
   protected _name: string;  
 
   constructor(name:string) {
@@ -29,10 +29,6 @@ export default class Character implements Fighter {
       amount: getRandomInt(1, 10),
     };   
   }
-
-  // static createdRacesInstances():number {
-  //   throw new Error('Not implemented');
-  // }
 
   get race() {
     return this._race;
@@ -68,18 +64,32 @@ export default class Character implements Fighter {
     return undefined;
   }
 
+  receiveDamage(attackPoints: number): number {
+    const damage = attackPoints - this.defense;
+    if (damage > 0) {
+      const life = this._lifePoints - damage;
+      this._lifePoints = (life <= 0) ? -1 : life;
+    }
+    return this._lifePoints; // pelo que eu entendi é para funcionar o set que deixei race/elf
+  }
+
   attack(enemy: Fighter): void {
-    throw new Error('Method not implemented.');
+    enemy.receiveDamage(this.strength);
   }
 
   levelUp(): void {
-    throw new Error('Method not implemented.');
+    this._maxLifePoints += getRandomInt(1, 10); 
+    this._strength += getRandomInt(1, 10);
+    this._dexterity += getRandomInt(1, 10);
+    this._defense += getRandomInt(1, 10);
+    // this._energy.amount = 10;
+    // this._energy = (undefined) || (this._energy.amount = 10);
+    if (this._energy) {
+      this._energy.amount = 10;
+    }
+    if (this._maxLifePoints > this._race.maxLifePoints) {
+      this._maxLifePoints = this._race.maxLifePoints;
+    }
+    // this._lifePoints = this._maxLifePoints;
   }
-
-  receiveDamage(attackPoints: number): number {
-    throw new Error('Method not implemented.');
-  }
-
-  // abstract set maxLifePoints(life);
-  // abstract get maxLifePoints():number;
 }

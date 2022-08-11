@@ -3,6 +3,7 @@ import Energy from './Energy';
 import Fighter from './Fighter/index';
 import Race, { Elf } from './Races';
 import getRandomInt from './utils';
+import SimpleFighter from './Fighter/SimpleFighter';
 
 export default class Character implements Fighter {
   protected _race:Race;
@@ -73,7 +74,7 @@ export default class Character implements Fighter {
     return this._lifePoints; // pelo que eu entendi é para funcionar o set que deixei race/elf
   }
 
-  attack(enemy: Fighter): void {
+  attack(enemy: SimpleFighter): void {
     enemy.receiveDamage(this.strength);
   }
 

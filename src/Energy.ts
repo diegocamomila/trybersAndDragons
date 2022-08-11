@@ -2,6 +2,6 @@
 export type EnergyType = 'mana' | 'stamina';
 
 export default interface Energy {
-  type_:EnergyType;
+  type:EnergyType;
   amount:number;
 }

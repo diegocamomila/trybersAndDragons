@@ -10,7 +10,7 @@ docker exec -it trybers_and_dragons bash
 # derruba tudo e apaga tudo
 docker container stop $(docker container ls -a -q) && docker system prune -a -f --volumes 
 
-# derruba container 
+# verifica se tem container 
 docker container ls -a -q
 
 # derruba compose

@@ -1,9 +1,8 @@
 import Archetype, { Mage } from './Archetypes';
 import Energy from './Energy';
-import Fighter from './Fighter/index';
+import Fighter, { SimpleFighter } from './Fighter';
 import Race, { Elf } from './Races';
 import getRandomInt from './utils';
-import SimpleFighter from './Fighter/SimpleFighter';
 
 export default class Character implements Fighter {
   protected _race:Race;
@@ -13,7 +12,7 @@ export default class Character implements Fighter {
   protected _strength: number;
   protected _defense: number;  
   protected _dexterity: number;
-  protected _energy: Energy | undefined;
+  protected _energy: Energy;
   protected _name: string;  
 
   constructor(name:string) {
@@ -26,7 +25,7 @@ export default class Character implements Fighter {
     this._strength = getRandomInt(1, 10);
     this._defense = getRandomInt(1, 10);
     this._energy = {
-      type: this._archetype.energyType,
+      type_: this._archetype.energyType,
       amount: getRandomInt(1, 10),
     };   
   }
@@ -58,7 +57,7 @@ export default class Character implements Fighter {
   get energy() {
     if (this._energy) {
       return {
-        type: this._energy.type,
+        type_: this._energy.type_,
         amount: this._energy.amount,
       };
     }

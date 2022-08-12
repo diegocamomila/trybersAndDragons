@@ -6,7 +6,7 @@ export default interface Fighter extends SimpleFighter {
   strength: number;
   defense: number;
   energy?: Energy | undefined;
-  attack(enemy: Fighter): void;
+  attack(enemy: Fighter | SimpleFighter): void;
   special?(enemy: Fighter): void;
   levelUp(): void;
   receiveDamage(attackPoints: number): number;

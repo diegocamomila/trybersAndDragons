@@ -11,17 +11,11 @@ export default class PVP extends Battle {
     this._enemies = enemies;
   }
 
-  get character1() {
-    return this._player1;
-  }
-
-  get character2() {
-    return this._player2;
-  }
-
   fight(): number {
-    this._player1.attack(this._player2);
-    this._player2.attack(this._player1);
+    this._enemies.forEach((enemy) => {
+      this._player.attack(enemy);
+      enemy.attack(this._player);
+    });
     return super.fight() === 1 ? 1 : -1;
   }
 }

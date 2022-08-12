@@ -1,4 +1,4 @@
-import Fighter from '../Fighter';
+import Fighter from '../Fighter/Fighter';
 import Battle from './Battle';
 
 export default class PVP extends Battle {
@@ -11,11 +11,11 @@ export default class PVP extends Battle {
     this._player2 = player2;
   }
 
-  get character1() {
+  get player1() {
     return this._player1;
   }
 
-  get character2() {
+  get player2() {
     return this._player2;
   }
 

@@ -13,10 +13,10 @@ export default class Character implements Fighter {
   protected _defense: number;  
   protected _dexterity: number;
   protected _energy: Energy;
-  protected _name: string;  
+  // protected _name: string;  
 
   constructor(name:string) {
-    this._name = name;
+    // this._name = name;
     this._dexterity = getRandomInt(1, 10);
     this._race = new Elf(name, this._dexterity);
     this._archetype = new Mage(name);
@@ -70,7 +70,7 @@ export default class Character implements Fighter {
       const life = this._lifePoints - damage;
       this._lifePoints = (life <= 0) ? -1 : life;
     }
-    return this._lifePoints; // pelo que eu entendi é para funcionar o set que deixei race/elf
+    return this._lifePoints; 
   }
 
   attack(enemy: SimpleFighter): void {

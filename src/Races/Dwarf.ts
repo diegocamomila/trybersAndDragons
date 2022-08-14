@@ -8,10 +8,11 @@ export default class Dwarf extends Race {
   constructor(_name:string, _dexterity:number) {
     super(_name, _dexterity);
     this.maxLifePoints = 80;
+    Dwarf.counterInstance += 1;
   }
 
   static createdRacesInstances() {
-    this.counterInstance += 1;
+    // this.counterInstance += 1;
     return this.counterInstance;
   }
   
